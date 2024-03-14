@@ -1,20 +1,22 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:task_onboard_splash/constants/colors/color_constants.dart';
 import 'package:task_onboard_splash/constants/onboard_buttons/custom_buttons.dart';
 import 'package:task_onboard_splash/constants/texts/text_and_style/onboard_description_and_style.dart';
 import 'package:task_onboard_splash/constants/texts/text_and_style/onboard_title_and_style.dart';
 import 'package:task_onboard_splash/onboard_model/onboard_model.dart';
+import 'package:task_onboard_splash/pages/order_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class OnboardPage extends StatefulWidget {
+  const OnboardPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<OnboardPage> createState() => _OnboardPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _OnboardPageState extends State<OnboardPage> {
   late PageController pageController;
   int currentPage = 0;
   List<OnboardModel> onboards = OnboardModel.getOnboardModelItems;
@@ -87,8 +89,17 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             CustomButtons(
-              onLeftButtonPressed: () {
-                if (currentPage > 0) {
+              onLeftButtonPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setBool('Order', true).then((value) {
+                  Navigator.pushReplacement(context,
+                    MaterialPageRoute(
+                      builder: (context) => const OrderPage(),
+                    ),);
+                });
+
+                    if (currentPage > 0)
+                {
                   pageController.previousPage(
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeInOut,
@@ -103,6 +114,14 @@ class _HomePageState extends State<HomePage> {
                     curve: Curves.easeInOut,
                   );
                   setState(() {});
+                }
+                else if (currentPage == onboards.length - 1) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const OrderPage(),
+                    ),
+                  );
                 }
               },
               isLastPage: currentPage == onboards.length - 1,
