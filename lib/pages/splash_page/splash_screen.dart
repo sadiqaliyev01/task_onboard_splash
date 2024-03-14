@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:task_onboard_splash/constants/colors/color_constants.dart';
-import 'package:task_onboard_splash/pages/onboard_page.dart';
+import 'package:task_onboard_splash/constants/color_constants.dart';
+import 'package:task_onboard_splash/pages/onboard_page/onboard_screen.dart';
+import 'package:task_onboard_splash/pages/splash_page/widgets/splash_title.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -21,15 +22,7 @@ class _SplashPageState extends State<SplashPage> {
         body: Column(
           children: [
             const SizedBox(height: 30,),
-            Text(
-              "Welcome to the World of the Flavors!",
-              style: TextStyle(
-                color: ColorConstants().white,
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
+            const SplashTitle(),
             Center(
               child: FadeInLeft(
                 child: Image.asset("assets/png_images/sushi_splash.png"),

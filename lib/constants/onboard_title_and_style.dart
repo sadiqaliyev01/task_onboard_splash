@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_onboard_splash/constants/colors/color_constants.dart';
+import 'package:task_onboard_splash/constants/color_constants.dart';
 
 class OnboardTitleAndStyle extends StatelessWidget {
   final String title;

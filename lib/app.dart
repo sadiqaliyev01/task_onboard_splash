@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:task_onboard_splash/pages/onboard_page.dart';
-import 'package:task_onboard_splash/pages/order_page.dart';
+import 'package:task_onboard_splash/pages/order_page/order_screen.dart';
+import 'package:task_onboard_splash/pages/splash_page/splash_screen.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: isOrder == true ? const OrderPage(): const OnboardPage(),
+      home: isOrder == false ? const OrderPage(): const SplashPage(),
       debugShowCheckedModeBanner: false,
     );
   }
