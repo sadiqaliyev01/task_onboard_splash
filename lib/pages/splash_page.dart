@@ -20,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
         backgroundColor: ColorConstants().transparent,
         body: Column(
           children: [
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             Text(
               "Welcome to the World of the Flavors!",
               style: TextStyle(
