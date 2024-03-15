@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:task_onboard_splash/constants/color_constants.dart';
-import 'package:task_onboard_splash/constants/left_button.dart';
-import 'package:task_onboard_splash/constants/onboard_skip_button.dart';
-import 'package:task_onboard_splash/constants/right_button.dart';
-import 'package:task_onboard_splash/constants/onboard_description_and_style.dart';
-import 'package:task_onboard_splash/constants/onboard_title_and_style.dart';
+import 'package:task_onboard_splash/pages/onboard_page/widgets/onboard_left_button.dart';
+import 'package:task_onboard_splash/pages/onboard_page/widgets/onboard_skip_button.dart';
+import 'package:task_onboard_splash/pages/onboard_page/widgets/onboard_right_button.dart';
+import 'package:task_onboard_splash/pages/onboard_page/widgets/onboard_description_and_style.dart';
+import 'package:task_onboard_splash/pages/onboard_page/widgets/onboard_title_and_style.dart';
 import 'package:task_onboard_splash/onboard_model/onboard_model.dart';
 import 'package:task_onboard_splash/pages/order_page/order_screen.dart';
 
@@ -100,7 +101,7 @@ class _OnboardPageState extends State<OnboardPage> {
                 ),
                 const OnboardSkipButton(),
                 RightButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (currentPage < onboards.length - 1) {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 500),
@@ -108,12 +109,15 @@ class _OnboardPageState extends State<OnboardPage> {
                       );
                       setState(() {});
                     } else if (currentPage == onboards.length - 1) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const OrderPage(),
-                        ),
-                      );
+                      SharedPreferences prefsOrder = await SharedPreferences.getInstance();
+                      SharedPreferences prefsSplash = await SharedPreferences.getInstance();
+                      await prefsSplash.setBool('Splash', false);
+                      await prefsOrder.setBool('Order', true).then((value) {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const OrderPage()),
+                        );
+                      });
                     }
                   },
                   isLastPage: currentPage == onboards.length - 1,

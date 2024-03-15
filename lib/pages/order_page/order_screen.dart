@@ -5,6 +5,8 @@ import 'package:task_onboard_splash/pages/order_page/widgets/order_scaffold_body
 class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

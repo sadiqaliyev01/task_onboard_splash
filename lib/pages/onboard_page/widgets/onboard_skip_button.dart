@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../pages/order_page/order_screen.dart';
+import '../../order_page/order_screen.dart';
 
 class OnboardSkipButton extends StatelessWidget {
   const OnboardSkipButton({super.key});
@@ -10,8 +10,10 @@ class OnboardSkipButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setBool('Order', true).then((value) {
+        SharedPreferences prefsOrder = await SharedPreferences.getInstance();
+        SharedPreferences prefsSplash = await SharedPreferences.getInstance();
+        await prefsSplash.setBool('Splash', false);
+        await prefsOrder.setBool('Order', true).then((value) {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const OrderPage()),

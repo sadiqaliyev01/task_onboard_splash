@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'color_constants.dart';
+import '../../../constants/color_constants.dart';
 
 class OnboardDescriptionAndStyle extends StatelessWidget {
 

@@ -1,8 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants/onboard_description_and_style.dart';
-import '../../../constants/onboard_title_and_style.dart';
+import 'onboard_description_and_style.dart';
+import 'onboard_title_and_style.dart';
 import '../../../onboard_model/onboard_model.dart';
 
 class OnboardPageViewBuilder extends StatefulWidget {
