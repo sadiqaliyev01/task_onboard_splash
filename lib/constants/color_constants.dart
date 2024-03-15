@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ColorConstants{
-
+class ColorConstants {
   Color transparent = Colors.transparent;
   Color white = Colors.white;
   Color red = Colors.red;

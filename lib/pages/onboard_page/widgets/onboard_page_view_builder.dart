@@ -6,7 +6,7 @@ import 'onboard_title_and_style.dart';
 import '../../../onboard_model/onboard_model.dart';
 
 class OnboardPageViewBuilder extends StatefulWidget {
-   const OnboardPageViewBuilder({super.key});
+  const OnboardPageViewBuilder({super.key});
 
   @override
   State<OnboardPageViewBuilder> createState() => _OnboardPageViewBuilderState();
@@ -19,17 +19,17 @@ class _OnboardPageViewBuilderState extends State<OnboardPageViewBuilder> {
 
   List<OnboardModel> onboards = OnboardModel.getOnboardModelItems;
 
-   @override
+  @override
   void initState() {
     super.initState();
-     pageController = PageController(initialPage: currentPage);
-   }
+    pageController = PageController(initialPage: currentPage);
+  }
 
-   @override
+  @override
   void dispose() {
     super.dispose();
-     pageController.dispose();
-   }
+    pageController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

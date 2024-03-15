@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:task_onboard_splash/pages/onboard_page/onboard_screen.dart';
 import 'package:task_onboard_splash/pages/order_page/order_screen.dart';
 import 'package:task_onboard_splash/pages/splash_page/splash_screen.dart';
 
@@ -45,7 +44,7 @@ class _MyAppState extends State<MyApp> {
           ? const OrderPage()
           : isSplash == false
               ? const SplashPage()
-              : const OnboardPage(),
+              : const SplashPage(),
       debugShowCheckedModeBanner: false,
     );
   }

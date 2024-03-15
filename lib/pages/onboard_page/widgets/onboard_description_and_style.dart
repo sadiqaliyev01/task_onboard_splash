@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../constants/color_constants.dart';
 
 class OnboardDescriptionAndStyle extends StatelessWidget {
-
   final String description;
 
   const OnboardDescriptionAndStyle({super.key, required this.description});

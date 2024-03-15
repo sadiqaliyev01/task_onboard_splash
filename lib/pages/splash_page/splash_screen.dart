@@ -15,26 +15,6 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorConstants().transparent,
-        body: Column(
-          children: [
-            const SizedBox(height: 30,),
-            const SplashTitle(),
-            Center(
-              child: FadeInLeft(
-                child: Image.asset("assets/png_images/sushi_splash.png"),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3)).whenComplete(() {
@@ -45,5 +25,27 @@ class _SplashPageState extends State<SplashPage> {
         ),
       );
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: ColorConstants().transparent,
+        body: Column(
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            const SplashTitle(),
+            Center(
+              child: FadeInLeft(
+                child: Image.asset("assets/png_images/sushi_splash.png"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
